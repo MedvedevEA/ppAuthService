@@ -16,7 +16,7 @@ type Config struct {
 	Scheduler Scheduler
 }
 type Scheduler struct {
-	TimeoutRemoveRefreshTokens string `envconfig:"SCHEDULER_TIMEOUT_REMOVE_REFRESH_TOKENS" required:"true"`
+	TimeoutRemoveRefreshTokens time.Duration `envconfig:"SCHEDULER_TIMEOUT_REMOVE_REFRESH_TOKENS" required:"true"`
 }
 type Server struct {
 	BindAddr     string        `envconfig:"SERVER_BIND_ADDR" required:"true"`
@@ -36,9 +36,9 @@ type Store struct {
 	PoolMaxConnIdleTime time.Duration `envconfig:"STORE_POOL_MAX_CONN_IDLE_TIME" default:"100s"`
 }
 type Token struct {
-	PrivateKeyPath  string `envconfig:"TOKEN_PRIVATE_KEY_PATH" required:"true"`
-	AccessLifetime  string `envconfig:"TOKEN_ACCESS_LIFETIME" required:"true"`
-	RefreshLifetime string `envconfig:"TOKEN_REFRESH_LIFETIME" required:"true"`
+	PrivateKeyPath  string        `envconfig:"TOKEN_PRIVATE_KEY_PATH" required:"true"`
+	AccessLifetime  time.Duration `envconfig:"TOKEN_ACCESS_LIFETIME" required:"true"`
+	RefreshLifetime time.Duration `envconfig:"TOKEN_REFRESH_LIFETIME" required:"true"`
 }
 
 func MustNew() *Config {
