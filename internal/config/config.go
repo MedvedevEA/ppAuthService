@@ -43,7 +43,7 @@ type Token struct {
 
 func MustNew() *Config {
 	//TODO
-	if err := godotenv.Load("./../.env"); err != nil {
+	if err := godotenv.Load("./../../.env"); err != nil {
 		log.Fatalf("failed to load configuration: %v\n", err)
 	}
 
